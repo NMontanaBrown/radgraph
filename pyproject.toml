@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "radgraph"
+version = "0.1.14"
+authors = [
+    { name = "Jean-Benoit Delbrouck" },
+    { name = "Nina Montana Brown" },
+]
+license = { text = "MIT" }
+urls = { homepage = "https://github.com/Stanford-AIMI/radgraph" }
+description = "RadGraph project for scientific and engineering purposes"
+readme = "README.md"
+requires-python = ">=3.8,<3.14"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [    
+    "torch>=2.1.0,<2.5",
+    "transformers>=4.39.0",
+    "appdirs",
+    "jsonpickle",
+    "filelock",
+    "h5py",
+    "spacy",
+    "nltk",
+    "dotmap",
+    "pytest",
+    "spacy",
+    "nltk",
+    "dotmap",
+    "pytest",
+]
+
+
+[tool.setuptools.packages.find]
+include = ["*"]
