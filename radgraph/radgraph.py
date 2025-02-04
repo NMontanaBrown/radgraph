@@ -1,7 +1,7 @@
 import logging
 import torch.nn as nn
 import numpy as np
-
+from tqdm import tqdm
 import json
 import os
 import sys
@@ -63,7 +63,6 @@ class RadGraph(nn.Module):
             cuda = 0 if torch.cuda.is_available() else -1
 
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        device = "cpu"
 
         self.cuda = cuda
         self.batch_size = batch_size
@@ -172,7 +171,8 @@ class RadGraph(nn.Module):
 
         # Forward
         results = []
-        for batch in iterator:
+        # Logging the progress of the forward pass.
+        for batch in tqdm(iterator, desc="RadGraph forward pass..."):
             batch = batch_to_device(batch, self.device)
             output_dict = self.model(**batch)
             results.append(self.model.make_output_human_readable(output_dict).to_json())
